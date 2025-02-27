@@ -12,11 +12,6 @@ class GebruikerController extends Controller
         return view('gebruiker.home');
     }
 
-    public function login()
-    {
-        return view('gebruiker.login');
-    }
-
     public function register()
     {
         return view('gebruiker.register');
@@ -39,5 +34,26 @@ class GebruikerController extends Controller
         $gebruiker->save();
 
         return redirect()->route('gebruiker.home');
+    }
+
+    public function login()
+    {
+        return view('gebruiker.login');
+    }
+
+    public function authenticate(Request $request)
+    {
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required'
+        ]);
+
+        $gebruiker = Gebruiker::where('email', $request->email)->where('password', $request->password)->first();
+
+        if ($gebruiker) {
+            return redirect()->route('gebruiker.home');
+        }
+
+        return redirect()->route('gebruiker.login');
     }
 }
