@@ -13,6 +13,7 @@ Route::name("gebruiker.")->group(function(){
     Route::get('/gebruiker/login',[GebruikerController::class,'login'])->name('login');
     Route::get('/gebruiker/register',[GebruikerController::class,'register'])->name('register');
     Route::post('/gebruiker/store',[GebruikerController::class,'store'])->name('store');
+    Route::post('/gebruiker/authenticate',[GebruikerController::class,'authenticate'])->name('authenticate');
 });
 
 Route::name("events.")->group(function(){
