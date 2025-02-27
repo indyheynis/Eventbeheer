@@ -12,6 +12,17 @@ class GebruikerController extends Controller
         return view('gebruiker.home');
     }
 
+    public function dasboard()
+    {
+        $gebruikers = Gebruiker::all();
+        return view('gebruiker.dashboard', compact('gebruikers'));
+    }
+
+    public function login()
+    {
+        return view('gebruiker.login');
+    }
+
     public function register()
     {
         return view('gebruiker.register');
@@ -36,24 +47,28 @@ class GebruikerController extends Controller
         return redirect()->route('gebruiker.home');
     }
 
-    public function login()
+    public function edit($id)
     {
-        return view('gebruiker.login');
+        $gebruiker = Gebruiker::find($id);
+        return view('gebruiker.edit', compact('gebruiker'));
     }
 
-    public function authenticate(Request $request)
+    public function update(Request $request, $id)
     {
         $request->validate([
+            'name' => 'required',
             'email' => 'required',
-            'password' => 'required'
+            'password' => 'required',
+            'role' => 'required'
         ]);
 
-        $gebruiker = Gebruiker::where('email', $request->email)->where('password', $request->password)->first();
+        $gebruiker = Gebruiker::find($id);
+        $gebruiker->name = $request->name;
+        $gebruiker->email = $request->email;
+        $gebruiker->password = $request->password;
+        $gebruiker->role = $request->role;
+        $gebruiker->save();
 
-        if ($gebruiker) {
-            return redirect()->route('gebruiker.home');
-        }
-
-        return redirect()->route('gebruiker.login');
+        return redirect()->route('gebruiker.home');
     }
 }
