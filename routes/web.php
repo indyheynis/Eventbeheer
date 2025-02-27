@@ -10,9 +10,9 @@ Route::get('/', function () {
 
 Route::name("gebruiker.")->group(function(){
     Route::get('/gebruiker/home',[GebruikerController::class,'home'])->name('home');
-    Route::get('/gebruiker/login',[GebruikerController::class,'login'])->name('login');
     Route::get('/gebruiker/register',[GebruikerController::class,'register'])->name('register');
     Route::post('/gebruiker/store',[GebruikerController::class,'store'])->name('store');
+    Route::get('/gebruiker/login',[GebruikerController::class,'login'])->name('login');
     Route::post('/gebruiker/authenticate',[GebruikerController::class,'authenticate'])->name('authenticate');
 });
 
