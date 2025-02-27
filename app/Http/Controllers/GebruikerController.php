@@ -15,7 +15,7 @@ class GebruikerController extends Controller
     public function dasboard()
     {
         $gebruikers = Gebruiker::all();
-        return view('gebruiker.dasboard', compact('gebruikers'));
+        return view('gebruiker.dashboard', compact('gebruikers'));
     }
 
     public function login()
