@@ -15,6 +15,7 @@ Route::name("gebruiker.")->group(function () {
     Route::get('/gebruiker/login', [GebruikerController::class, 'login'])->name('login');
     Route::get('/gebruiker/dashboard', [GebruikerController::class, 'dashboard'])->name('dashboard');
     Route::get('/gebruiker/edit/{id}', [GebruikerController::class, 'edit'])->name('edit');
+    Route::get('/gebruiker/delete/{id}', [GebruikerController::class, 'delete'])->name('delete');
     Route::post('/gebruiker/update/{id}', [GebruikerController::class, 'update'])->name('update');
     Route::post('/gebruiker/authenticate', [GebruikerController::class, 'authenticate'])->name('authenticate');
 });
