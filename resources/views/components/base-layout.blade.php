@@ -38,7 +38,7 @@
             color: #ff5733;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
-        header .login-btn{
+        header .login-btn {
             position: absolute;
             top: 50%;
             right: 20px;
@@ -209,6 +209,62 @@
             color: #fff;
             background-color: #343a40;
             border-color: #454d55;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-toggle {
+            cursor: pointer;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-menu a,
+        .dropdown-menu .dropdown-item {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            cursor: pointer;
+        }
+
+        .dropdown-menu a:hover,
+        .dropdown-menu .dropdown-item:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu .delete-item {
+            color: red;
+        }
+
+        .delete-item {
+            color: red;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 12px 16px;
+            text-align: left;
+            width: 100%;
+            font-family: inherit; /* Ensure the font matches the rest of the text */
+            font-size: inherit; /* Ensure the font size matches the rest of the text */
+        }
+
+        .delete-item:hover {
+            background-color: #f1f1f1;
         }
     </style>
     {{ $styles ?? '' }}
