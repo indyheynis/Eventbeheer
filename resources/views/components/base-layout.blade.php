@@ -6,8 +6,11 @@
     <title>{{ $title ?? 'Default Title' }}</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <style>
+        html {
+            overflow-x: hidden;
+        }
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Bahnschrift', cursive;
             background: linear-gradient(to right, #ff5733, #c70039);
             color: #333;
             margin: 0;
@@ -15,6 +18,8 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            font-size: 16px;
+            overflow-x: hidden;
         }
         header {
             background-color: rgba(0, 0, 0, 0.7);
@@ -154,6 +159,56 @@
         .btn-primary:hover {
             background-color: #c70039;
             transform: scale(1.05);
+        }
+
+        .table-reponsive {
+            overflow-x: auto;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1rem;
+            background-color: transparent;
+        }
+        .table th,
+        .table td {
+            padding: 12px;
+            text-align: left;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .table thead th {
+            vertical-align: bottom;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        .table tbody + tbody {
+            border-top: 2px solid #dee2e6;
+        }
+
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .table-bordered {
+            border: 1px solid #dee2e6;
+        }
+
+        .table-bordered th,
+        .table-bordered td {
+            border: 1px solid #dee2e6;
+        }
+
+        .table-bordered thead th,
+        .table-bordered thead td {
+            border-bottom-width: 2px;
+        }
+
+        .thead-dark th {
+            color: #fff;
+            background-color: #343a40;
+            border-color: #454d55;
         }
     </style>
     {{ $styles ?? '' }}
