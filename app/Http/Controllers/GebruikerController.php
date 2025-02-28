@@ -95,4 +95,12 @@ class GebruikerController extends Controller
 
         return redirect()->route('gebruiker.home');
     }
+
+    public function delete($id)
+    {
+        $gebruiker = Gebruiker::find($id);
+        $gebruiker->delete();
+
+        return redirect()->route('gebruiker.dashboard');
+    }
 }
