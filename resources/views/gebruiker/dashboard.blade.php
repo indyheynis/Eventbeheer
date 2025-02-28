@@ -18,7 +18,17 @@
                 <tbody>
                     @foreach($gebruikers as $gebruiker)
                         <tr>
-                            <td>{{ $gebruiker->name }}</td>
+                            <td class="dropdown">
+                                <span class="dropdown-toggle">{{ $gebruiker->name }}</span>
+                                <div class="dropdown-menu">
+                                    <a href="{{ route('gebruiker.edit', $gebruiker->id) }}" class="dropdown-item">Edit</a>
+                                    <form action="{{ route('gebruiker.delete', $gebruiker->id) }}" method="POST" style="display:inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="dropdown-item delete-item">Delete</button>
+                                    </form>
+                                </div>
+                            </td>
                             <td>{{ $gebruiker->email }}</td>
                             <td>{{ $gebruiker->role }}</td>
                         </tr>
@@ -27,4 +37,8 @@
             </table>
         </div>
     </div>
+
+    <x-slot name="scripts">
+        <script src="{{ asset('js/dashboard.js') }}"></script>
+    </x-slot>
 </x-base-layout>
