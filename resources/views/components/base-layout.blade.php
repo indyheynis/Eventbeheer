@@ -38,7 +38,7 @@
             color: #ff5733;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
-        header .login-btn {
+        header .login-btn, header .logout-btn {
             position: absolute;
             top: 50%;
             right: 20px;
@@ -52,7 +52,7 @@
             font-size: 16px;
             transition: background-color 0.3s, transform 0.3s;
         }
-        header .login-btn:hover {
+        header .login-btn:hover, header .logout-btn:hover {
             background-color: #c70039;
             transform: scale(1.1) translateY(-50%);
         }
@@ -269,10 +269,20 @@
     </style>
     {{ $styles ?? '' }}
 </head>
+@php
+    use Illuminate\Support\Facades\Auth;
+@endphp
 <body>
     <header>
         <h1><a href="{{ route('gebruiker.home')}}">Event Ticket Website</a></h1>
-        <a href="{{ route('gebruiker.login')}}" class="login-btn">Login</a>
+        @if (Auth::check())
+            <form action="{{ route('gebruiker.logout')}}" method="POST" style="display: inline;">
+                @csrf
+                <button type="submit" class="logout-btn">Logout</button>
+            </form>
+        @else
+            <a href="{{ route('gebruiker.login')}}" class="login-btn">Login</a>
+        @endif
     </header>
 
     <main>
