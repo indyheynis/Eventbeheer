@@ -22,11 +22,7 @@
                                 <span class="dropdown-toggle">{{ $gebruiker->name }}</span>
                                 <div class="dropdown-menu">
                                     <a href="{{ route('gebruiker.edit', $gebruiker->id) }}" class="dropdown-item">Edit</a>
-                                    <form action="{{ route('gebruiker.delete', $gebruiker->id) }}" method="POST" style="display:inline;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="dropdown-item delete-item">Delete</button>
-                                    </form>
+                                    <a href="{{ route('gebruiker.delete', $gebruiker->id)}}" class="dropdown-item delete-item">Delete</a>
                                 </div>
                             </td>
                             <td>{{ $gebruiker->email }}</td>
