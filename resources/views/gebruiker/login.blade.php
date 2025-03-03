@@ -5,7 +5,7 @@
     </x-slot>
 
     <div class="container">
-        <h2>Login</h2>
+        <h1>Login</h1>
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -18,12 +18,12 @@
         <form action="{{ route('gebruiker.authenticate') }}" method="POST">
             @csrf
             <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" class="form-control" required>
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
             </div>
             <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" class="form-control" required>
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
             </div>
             <button type="submit" class="btn btn-primary">Login</button>
         </form>
