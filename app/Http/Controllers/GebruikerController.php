@@ -82,25 +82,22 @@ class GebruikerController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'password' => 'required',
-            'role' => 'required'
+            'password' => 'required'
         ]);
 
         $gebruiker = Gebruiker::find($id);
         $gebruiker->name = $request->name;
         $gebruiker->email = $request->email;
         $gebruiker->password = $request->password;
-        $gebruiker->role = $request->role;
         $gebruiker->save();
 
-        return redirect()->route('gebruiker.home');
+        return redirect()->route('gebruiker.dashboard');
     }
 
     public function delete($id)
     {
-        $gebruiker = Gebruiker::find($id);
+        $gebruiker = Gebruiker::findorFail($id);
         $gebruiker->delete();
-
         return redirect()->route('gebruiker.dashboard');
     }
 }
