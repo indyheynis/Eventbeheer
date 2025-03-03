@@ -30,5 +30,16 @@ Route::middleware(['web'])->group(function () {
         Route::get('/events/home', [EvenementController::class, 'home'])->name('home');
         Route::get('/events/index', [EvenementController::class, 'index'])->name('index');
         Route::get('/events/create', [EvenementController::class, 'create'])->name('create');
+        Route::get('/events/edit/{id}', [EvenementController::class, 'edit'])->name('edit');
+        Route::post('/events/store', [EvenementController::class, 'store'])->name('store');
+    });
+
+    Route::name("tickets.")->group(function () {
+        Route::get('/tickets/index', [TicketController::class, 'index'])->name('index');
+        Route::get('/tickets/create', [TicketController::class, 'create'])->name('create');
+        Route::post('/tickets/store', [TicketController::class, 'store'])->name('store');
+        Route::get('/tickets/edit/{id}', [TicketController::class, 'edit'])->name('edit');
+        Route::put('/tickets/update/{id}', [TicketController::class, 'update'])->name('update');
+        Route::get('/tickets/delete/{id}', [TicketController::class, 'delete'])->name('delete');
     });
 });
