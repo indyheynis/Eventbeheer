@@ -12,16 +12,12 @@ class GebruikerController extends Controller
         return view('gebruiker.home');
     }
 
-    public function dasboard()
+    public function dashboard()
     {
         $gebruikers = Gebruiker::all();
         return view('gebruiker.dashboard', compact('gebruikers'));
     }
 
-    public function login()
-    {
-        return view('gebruiker.login');
-    }
 
     public function register()
     {
@@ -32,7 +28,7 @@ class GebruikerController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|email',
             'password' => 'required',
             'role' => 'required'
         ]);
@@ -47,6 +43,34 @@ class GebruikerController extends Controller
         return redirect()->route('gebruiker.home');
     }
 
+    public function login()
+    {
+        return view('gebruiker.login');
+    }
+
+    public function authenticate(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
+        $gebruiker = Gebruiker::where('email', $request->email)->first();
+
+        if (!$gebruiker) {
+            //Email not found
+            return redirect()->route('gebruiker.login')->withErrors(['email' => 'Email not found']);
+        }
+
+        if ($request->password !== $gebruiker->password) {
+            //Password incorrect
+            return redirect()->route('gebruiker.login')->withErrors(['password' => 'Password incorrect']);
+        }
+
+        //Authentication successful
+        return redirect()->route('gebruiker.dashboard');
+    }
+
     public function edit($id)
     {
         $gebruiker = Gebruiker::find($id);
@@ -58,17 +82,22 @@ class GebruikerController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'password' => 'required',
-            'role' => 'required'
+            'password' => 'required'
         ]);
 
         $gebruiker = Gebruiker::find($id);
         $gebruiker->name = $request->name;
         $gebruiker->email = $request->email;
         $gebruiker->password = $request->password;
-        $gebruiker->role = $request->role;
         $gebruiker->save();
 
-        return redirect()->route('gebruiker.home');
+        return redirect()->route('gebruiker.dashboard');
+    }
+
+    public function delete($id)
+    {
+        $gebruiker = Gebruiker::findorFail($id);
+        $gebruiker->delete();
+        return redirect()->route('gebruiker.dashboard');
     }
 }

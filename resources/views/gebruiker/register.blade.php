@@ -30,5 +30,6 @@
             </div>
             <button type="submit" class="btn btn-primary">Register</button>
         </form>
+        <h2>Already have an account? Click <a href="{{route('gebruiker.login')}}">here</a>.</h2>
     </div>
 </x-base-layout>
