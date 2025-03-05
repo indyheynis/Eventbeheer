@@ -14,12 +14,9 @@ Route::name("gebruiker.")->group(function(){
     Route::get('/gebruiker/login',[GebruikerController::class,'login'])->name('login');
     Route::get('/gebruiker/register',[GebruikerController::class,'register'])->name('register');
     Route::post('/gebruiker/store',[GebruikerController::class,'store'])->name('store');
-<<<<<<< HEAD
     Route::get('/gebruiker/edit/{id}',[GebruikerController::class,'edit'])->name('edit');
     Route::post('/gebruiker/update/{id}',[GebruikerController::class,'update'])->name('update');
-=======
     Route::post('/gebruiker/authenticate',[GebruikerController::class,'authenticate'])->name('authenticate');
->>>>>>> 8ddeec206c225eb746ae8537655efd316d699ecb
 });
 
 Route::name("events.")->group(function(){
