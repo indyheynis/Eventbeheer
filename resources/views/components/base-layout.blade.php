@@ -322,12 +322,12 @@
             </div>
         </div>
 
-        <div class="dropdown">
+        {{-- <div class="dropdown">
             <button class="dropdown-toggle">Orders</button>
             <div class="dropdown-menu">
                 <a href="{{ route('profile.create') }}" class="dropdown-item">Profile</a>
                 <a href="{{ route('profile.edit') }}" class="dropdown-item">Edit</a>
-            </div>
+            </div> --}}
 
     </header>
 
