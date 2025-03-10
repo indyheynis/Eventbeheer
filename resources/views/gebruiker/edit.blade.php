@@ -21,6 +21,16 @@
                 <small class="form-text text-muted">Leave blank if you do not want to change the password.</small>
             </div>
 
+            <div class="form-group">
+                <label for="role">Role</label>
+                <select class="form-control" id="role" name="role" required>
+                    <option value="admin" {{ $gebruiker->role === 'employee' ? 'selected' : '' }}>Employee</option>
+                    <option value="user" {{ $gebruiker->role === 'host' ? 'selected' : '' }}>Host</option>
+                    <option value="user" {{ $gebruiker->role === 'manager' ? 'selected' : '' }}>Manager</option>
+                    <option value="user" {{ $gebruiker->role === 'customer' ? 'selected' : '' }}>Customer</option>
+                </select>
+            </div>
+
             <button type="submit" class="btn btn-primary">Save</button>
         </form>
     </div>
