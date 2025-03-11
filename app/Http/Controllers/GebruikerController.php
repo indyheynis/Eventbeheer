@@ -43,11 +43,6 @@ class GebruikerController extends Controller
         return redirect()->route('gebruiker.home');
     }
 
-    public function login()
-    {
-        return view('gebruiker.login');
-    }
-
     public function authenticate(Request $request)
     {
         $request->validate([
