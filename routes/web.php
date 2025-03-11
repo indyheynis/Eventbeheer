@@ -15,7 +15,6 @@ Route::middleware(['web'])->group(function () {
         Route::get('/gebruiker/home', [GebruikerController::class, 'home'])->name('home');
         Route::get('/gebruiker/register', [GebruikerController::class, 'register'])->name('register');
         Route::post('/gebruiker/store', [GebruikerController::class, 'store'])->name('store');
-        Route::get('/gebruiker/login', [GebruikerController::class, 'login'])->name('login');
         Route::get('/gebruiker/dashboard', [GebruikerController::class, 'dashboard'])->name('dashboard');
         Route::get('/gebruiker/edit/{id}', [GebruikerController::class, 'edit'])->name('edit');
         Route::put('/gebruiker/update/{id}', [GebruikerController::class, 'update'])->name('update');
@@ -46,12 +45,4 @@ Route::middleware(['web'])->group(function () {
         Route::post('/events/store', [EvenementController::class, 'store'])->name('store');
     });
 
-    Route::name("tickets.")->group(function () {
-        Route::get('/tickets/index', [TicketController::class, 'index'])->name('index');
-        Route::get('/tickets/create', [TicketController::class, 'create'])->name('create');
-        Route::post('/tickets/store', [TicketController::class, 'store'])->name('store');
-        Route::get('/tickets/edit/{id}', [TicketController::class, 'edit'])->name('edit');
-        Route::put('/tickets/update/{id}', [TicketController::class, 'update'])->name('update');
-        Route::get('/tickets/delete/{id}', [TicketController::class, 'delete'])->name('delete');
-    });
 });
