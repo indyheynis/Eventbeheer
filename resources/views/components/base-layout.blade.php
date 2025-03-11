@@ -295,16 +295,7 @@
 <body>
     <header>
         <h1><a href="{{ route('gebruiker.home')}}">Event Ticket Website</a></h1>
-        @if (Auth::check())
-            <p>User is logged in</p>
-            <form action="{{ route('gebruiker.logout')}}" method="POST" style="display: inline;">
-                @csrf
-                <button type="submit" class="logout-btn">Logout</button>
-            </form>
-        @else
-            <p>User is not logged in</p>
-            <a href="{{ route('gebruiker.login')}}" class="login-btn">Login</a>
-        @endif
+            <a href="{{ route('login')}}" class="login-btn">Login</a>
 
         <div class="dropdown">
             <button class="dropdown-toggle">Events</button>
