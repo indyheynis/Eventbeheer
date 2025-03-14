@@ -4,12 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Gebruiker;
+use Illuminate\Routing\Controller;
 
 class GebruikerController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['home', 'register', 'store', 'authenticate']);
+    }
+
     public function home()
     {
         return view('gebruiker.home');
+    }
+
+    public function login()
+    {
+        return view('login');
     }
 
     public function dashboard()
@@ -54,12 +65,12 @@ class GebruikerController extends Controller
 
         if (!$gebruiker) {
             //Email not found
-            return redirect()->route('gebruiker.login')->withErrors(['email' => 'Email not found']);
+            return redirect()->route('login')->withErrors(['email' => 'Email not found']);
         }
 
         if ($request->password !== $gebruiker->password) {
             //Password incorrect
-            return redirect()->route('gebruiker.login')->withErrors(['password' => 'Password incorrect']);
+            return redirect()->route('login')->withErrors(['password' => 'Password incorrect']);
         }
 
         //Authentication successful
