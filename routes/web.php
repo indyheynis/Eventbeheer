@@ -10,12 +10,12 @@ Route::middleware(['web'])->group(function () {
     Route::get('/', function () {
         return view('welcome');
 });
-
+Route::get('/login', [GebruikerController::class, 'login'])->name('login');
     Route::name("gebruiker.")->group(function () {
         Route::get('/gebruiker/home', [GebruikerController::class, 'home'])->name('home');
         Route::get('/gebruiker/register', [GebruikerController::class, 'register'])->name('register');
         Route::post('/gebruiker/store', [GebruikerController::class, 'store'])->name('store');
-        Route::get('/gebruiker/dashboard', [GebruikerController::class, 'dashboard'])->name('dashboard');
+        Route::get('/gebruiker/dashboard', [GebruikerController::class, 'dashboard'])->middleware('auth')->name('dashboard');
         Route::get('/gebruiker/edit/{id}', [GebruikerController::class, 'edit'])->name('edit');
         Route::put('/gebruiker/update/{id}', [GebruikerController::class, 'update'])->name('update');
         Route::post('/gebruiker/authenticate', [GebruikerController::class, 'authenticate'])->name('authenticate');
@@ -46,3 +46,5 @@ Route::middleware(['web'])->group(function () {
     });
 
 });
+
+require __DIR__.'/auth.php';
