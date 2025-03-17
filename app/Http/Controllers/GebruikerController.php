@@ -10,7 +10,7 @@ class GebruikerController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['home', 'register', 'store', 'authenticate']);
+        $this->middleware('auth')->except(['home', 'register', 'store', 'authenticate', 'dashboard']);
     }
 
     public function home()
