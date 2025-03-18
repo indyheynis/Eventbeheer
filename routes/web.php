@@ -30,8 +30,10 @@ Route::get('/login', [GebruikerController::class, 'login'])->name('login');
         Route::get('/events/home', [EvenementController::class, 'home'])->name('home');
         Route::get('/events/index', [EvenementController::class, 'index'])->name('index');
         Route::get('/events/create', [EvenementController::class, 'create'])->name('create');
-        Route::get('/events/edit/{id}', [EvenementController::class, 'edit'])->name('edit');
         Route::post('/events/store', [EvenementController::class, 'store'])->name('store');
+        Route::get('/events/edit/{id}', [EvenementController::class, 'edit'])->name('edit');
+        Route::put('/events/update/{id}', [EvenementController::class, 'update'])->name('update');
+        Route::get('/events/delete/{id}', [EvenementController::class, 'delete'])->name('delete');
     });
 
     Route::name("tickets.")->group(function () {
@@ -40,9 +42,7 @@ Route::get('/login', [GebruikerController::class, 'login'])->name('login');
         Route::post('/tickets/store', [TicketController::class, 'store'])->name('store');
         Route::get('/tickets/edit/{id}', [TicketController::class, 'edit'])->name('edit');
         Route::put('/tickets/update/{id}', [TicketController::class, 'update'])->name('update');
-    Route::get('/tickets/delete/{id}', [TicketController::class, 'delete'])->name('delete');
-        Route::get('/events/edit/{id}', [EvenementController::class, 'edit'])->name('edit');
-        Route::post('/events/store', [EvenementController::class, 'store'])->name('store');
+        Route::get('/tickets/delete/{id}', [TicketController::class, 'delete'])->name('delete');
     });
 
 });

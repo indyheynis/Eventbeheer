@@ -23,7 +23,7 @@ class GebruikerSeeder extends Seeder
             [
                 'name' => 'Luca Wijsman',
                 'email' => '186515@novacollege.nl',
-                'password' => 'brood',
+                'password' => 'stroopwafel',
                 'role' => 'manager'
             ],
             [
