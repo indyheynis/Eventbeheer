@@ -10,7 +10,7 @@ class GebruikerController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['home', 'register', 'store', 'authenticate', 'dashboard']);
+        $this->middleware('auth')->except(['home', 'register', 'store', 'authenticate', 'dashboard', 'edit', 'update', 'delete']);
     }
 
     public function home()
@@ -87,16 +87,20 @@ class GebruikerController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
-            'password' => 'required'
+            'email' => 'required|email',
+            'password' => 'nullable',
+            'role' => 'required'
         ]);
-
+    
         $gebruiker = Gebruiker::find($id);
         $gebruiker->name = $request->name;
         $gebruiker->email = $request->email;
-        $gebruiker->password = $request->password;
+        if ($request->password) {
+            $gebruiker->password = bcrypt($request->password); // Ensure password is hashed
+        }
+        $gebruiker->role = $request->role;
         $gebruiker->save();
-
+    
         return redirect()->route('gebruiker.dashboard');
     }
 
