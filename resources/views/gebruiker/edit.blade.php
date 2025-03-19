@@ -1,3 +1,4 @@
+<!-- filepath: c:\Users\hidde\Herd\Eventbeheer\resources\views\gebruiker\edit.blade.php -->
 <x-base-layout>
     <div class="container">
         <h1>Edit User</h1>
@@ -17,17 +18,17 @@
 
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" name="password" value="{{ $gebruiker->password}}">
+                <input type="password" class="form-control" id="password" name="password">
                 <small class="form-text text-muted">Leave blank if you do not want to change the password.</small>
             </div>
 
             <div class="form-group">
                 <label for="role">Role</label>
                 <select class="form-control" id="role" name="role" required>
-                    <option value="admin" {{ $gebruiker->role === 'employee' ? 'selected' : '' }}>Employee</option>
-                    <option value="user" {{ $gebruiker->role === 'host' ? 'selected' : '' }}>Host</option>
-                    <option value="user" {{ $gebruiker->role === 'manager' ? 'selected' : '' }}>Manager</option>
-                    <option value="user" {{ $gebruiker->role === 'customer' ? 'selected' : '' }}>Customer</option>
+                    <option value="employee" {{ $gebruiker->role === 'employee' ? 'selected' : '' }}>Employee</option>
+                    <option value="host" {{ $gebruiker->role === 'host' ? 'selected' : '' }}>Host</option>
+                    <option value="manager" {{ $gebruiker->role === 'manager' ? 'selected' : '' }}>Manager</option>
+                    <option value="customer" {{ $gebruiker->role === 'customer' ? 'selected' : '' }}>Customer</option>
                 </select>
             </div>
 
