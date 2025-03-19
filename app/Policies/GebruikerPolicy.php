@@ -14,10 +14,10 @@ class GebruikerPolicy
        
     // }
 
-    // public function viewAny(User $user)
-    // {
-    //     return in_array($user->role, ['manager', 'employee']);
-    // }
+    public function viewAny(User $user)
+    {
+        return in_array($user->role, ['manager', 'employee']);
+    }
 
     // public function edit(User $user)
     // {
